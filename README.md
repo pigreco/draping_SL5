@@ -221,12 +221,12 @@ SELECT RL2_DrapeGeometries(NULL,'dtmoro',NULL,'civici','geometry','geom3d',-9999
 -------------------------------------
 1
 ```
-<p align="center"> <a href="https://www.gaia-gis.it/fossil/librasterlite2/wiki?name=draping" target="_blank"><img src="./img/img_0322.png" width="600" title="Draping"></a>
+<p align="center"> <a href="https://www.gaia-gis.it/fossil/librasterlite2/wiki?name=draping" target="_blank"><img src="./img/img_0322.png" width="800" title="Draping"></a>
 </p>
 
 **Check geometries**:
 
-<p align="center"> <a href="https://www.gaia-gis.it/fossil/librasterlite2/wiki?name=draping" target="_blank"><img src="./img/img_0323.png" width="600" title="Check geometries"></a>
+<p align="center"> <a href="https://www.gaia-gis.it/fossil/librasterlite2/wiki?name=draping" target="_blank"><img src="./img/img_0323.png" width="800" title="Check geometries"></a>
 </p>
 
 - **elementi stradali**:
@@ -236,12 +236,12 @@ SELECT RL2_DrapeGeometries(NULL,'dtmoro',NULL,'elem_strad','geometry','geom3d',-
 -------------------------------------
 1
 ```
-<p align="center"> <a href="https://www.gaia-gis.it/fossil/librasterlite2/wiki?name=draping" target="_blank"><img src="./img/img_032s.png" width="600" title="Draping"></a>
+<p align="center"> <a href="https://www.gaia-gis.it/fossil/librasterlite2/wiki?name=draping" target="_blank"><img src="./img/img_032s.png" width="800" title="Draping"></a>
 </p>
 
 **Check geometries**:
 
-<p align="center"> <a href="https://www.gaia-gis.it/fossil/librasterlite2/wiki?name=draping" target="_blank"><img src="./img/img_033s.png" width="600" title="Check geometries"></a>
+<p align="center"> <a href="https://www.gaia-gis.it/fossil/librasterlite2/wiki?name=draping" target="_blank"><img src="./img/img_033s.png" width="800" title="Check geometries"></a>
 </p>
 
 
