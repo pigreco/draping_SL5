@@ -173,9 +173,15 @@ C'è solo un modo per caricare in modo efficace una griglia ASCII su Windows: l'
 
 ![img](./img/img_0320.png)
 
-tempo di esecuzione circa 52 minuti
+tempo di esecuzione per importare il DTM circa **52** minuti
 
 ![img](./img/img_0321.png)
+
+**quadro sinottico**
+
+il file sqlite pesa circa **1,85 GB** contro i circa **5 GB** dei file.
+
+![img](./img/sinottico.png)
 
 ### trasformare un set di dati 2D in uno 3D
 
@@ -212,7 +218,7 @@ Nel primo esempio abbiamo visto che la Toscana ha un **DTM** a media risoluzione
 
 ![img](./img/img_2.png)
 
-Ma su molte aree specifiche (mostrate nella figura di sopra dalle griglie rosse e verdi) la Toscana ha un secondo tipo di **DTM/DSM** basato su rilievi **Lidar** ad **alta risoluzione (1mx1m)**. Tali Lidar DTM/DSM non coprono l'intera Regione, ma dove sono disponibili, sono certamente fonte di dati di elevazione molto preziosi.Il DTM/DSM Lidar appartiene a due serie diverse (verde e rossa), e sono di età e accuratezza diverse.
+Ma su molte aree specifiche (mostrate nella figura di sopra dalle griglie rosse e verdi) la Toscana ha un secondo tipo di **DTM/DSM** basato su [rilievi](https://en.wikipedia.org/wiki/Lidar) **Lidar** ad **alta risoluzione (1mx1m)**. Tali Lidar DTM/DSM non coprono l'intera Regione, ma dove sono disponibili, sono certamente fonte di dati di elevazione molto preziosi.Il DTM/DSM Lidar appartiene a due serie diverse (verde e rossa), e sono di età e accuratezza diverse.
 
 Il miglior approccio possibile per drappeggiare le geometrie sarà ovviamente quello che assicurerà che in ogni caso verranno utilizzati i dati di elevazione più recenti e accurati, così da ottenere risultati ottimali. 
 **RL2_DrapeGeometries ()** ha la capacità di supportare uno scenario così complesso, vediamo come è possibile.
