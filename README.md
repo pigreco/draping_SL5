@@ -192,7 +192,7 @@ tempo di esecuzione per importare il DTM circa **52** minuti
 
 **quadro sinottico**
 
-il file sqlite pesa circa **1,85 GB** contro i circa **5 GB** dei file.
+il file sqlite pesa circa **2,5 GB** (compreso di elaborazioni di draping) contro i circa **5 GB** dei file singoli.
 
 <p align="center"> <a href="https://www.gaia-gis.it/fossil/librasterlite2/wiki?name=draping" target="_blank"><img src="./img/sinottico.png" width="500" title="Confronto tra file e database"></a>
 </p>
