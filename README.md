@@ -172,23 +172,36 @@ Infine, caricaremo DTM **dtmoro.asc** nella copertura raster creata nel passaggi
 Come mostrato nella figura sotto, useremo la procedura guidata della GUI appropriata per svolgere questa attività, ma se lo desideri, alla fine potresti adottare un approccio SQL puro eseguendo la seguente dichiarazione:
 
 ```sql
+SELECT RL2_SetMaxThreads(8); -- per usare fino ad un massimo di 8 threads in parallelo durante la compressione
 SELECT RL2_LoadRaster ('dtmoro','D:\dati_qgis\regione_toscana\DTM_Orografico\dtmoro.asc',0,3003,1,1);
 ```
+
+**NB.:** 
+
+per autorizzare **RL2** ad usare fino ad un massimo di **8 threads in parallelo** durante la compressione, e quindi comprimerà' **8 tiles alla volta**, con ovvio beneficio sui tempi totali di importazione. ;-)
+In generale non e' necessario chiedere 8 threads, va bene qualsiasi valore, ma di norma le moderne CPU hanno proprio 8 cores tra fisici e virtuali. La regola da usare è: se hai 8 cores la velocita' piu' alta si ottiene attivando tra i 12 ed i 16 threads; insomma, il doppio dei cores o poco meno.
+
+<p align="center"> <a href="" target="_blank"><img src="./img/cores.png" width="400" title="Il mio PC e le cores"></a>
+</p>
+
 **Avviso importante per gli utenti Windows**
 
 L'importazione di una griglia ASCII richiede necessariamente l'apertura di un file temporaneo di supporto. 
 Sfortunatamente tutte le versioni recenti di Windows pensano che i file temporanei siano oggetti pericolosi che generano un serio allarme di sicurezza che causa una condizione di errore irreversibile. 
 
-C'è solo un modo per caricare in modo efficace una griglia ASCII su Windows: l'applicazione (spatialite) deve necessariamente essere eseguita con i privilegi di amministratore.
+C'è solo un modo per caricare in modo efficace una griglia ASCII su Windows: l'applicazione (spatialite) deve necessariamente essere **eseguita con i privilegi di amministratore**.
 
 <p align="center"> <a href="" target="_blank"><img src="./img/img_032.png" width="500" title="Esegui come Amministratore"></a>
 </p>
 
-![img](./img/img_0320.png)
+<p align="center"> <a href="" target="_blank"><img src="./img/img_0320.png" width="700" title="Importa DTM da GUI"></a>
+</p>
 
-tempo di esecuzione per importare il DTM circa **52** minuti
+tempo di esecuzione per importare il DTM circa **31** minuti
 
-![img](./img/img_0321.png)
+
+<p align="center"> <a href="" target="_blank"><img src="./img/img_0321.png" width="700" title="Importa DTM con SQL puro"></a>
+</p>
 
 **quadro sinottico**
 
