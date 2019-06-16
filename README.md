@@ -43,7 +43,7 @@ Quindi, nell'esempio mostrato dalla figura di sotto, **Z = 121.88** sarà impost
 
 ### LINESTRING o POLYGON
 
-Le cose infelice diventano un po' più difficili nel caso delle geometrie LINESTRING o POLYGON. 
+Le cose diventano un po' più difficili nel caso delle geometrie **LINESTRING** o **POLYGON**. 
 
 In entrambi i casi possiamo ancora continuare ad adottare lo stesso approccio adottato per POINT; ci viene solo richiesto di eseguire un loop iterativo su ciascun vertice. 
 Ma in questo modo, come esemplificato dalla figura di sotto, otterremo un segmento retto che collega **V1** a **V0** che attraversa molte celle nella griglia raster. 
@@ -380,6 +380,5 @@ SELECT RL2_DrapeGeometries( NULL , 'dtmoro' , NULL , 'civici' , 'geometry' , 'ge
     * se impostato su **TRUE**, solo i valori **M** saranno influenzati da Drappeggio e tutti i valori **Z** saranno mantenuti intatti.
 
 ---
-Resta in contatto ... unisciti alla community, iscriviti alla [mailing list](http://groups.google.com/group/spatialite-users) degli utenti di SpatiaLite
-SpatiaLite è sviluppato e gestito da Alessandro Furieri [a.furieri@lqt.it](a.furieri@lqt.it)
+Resta in contatto ... unisciti alla community, iscriviti alla [mailing list](http://groups.google.com/group/spatialite-users) degli utenti di SpatiaLite. SpatiaLite è sviluppato e gestito da Alessandro Furieri [a.furieri@lqt.it](a.furieri@lqt.it)
 Fossil versione 2.0 [1d407cff32] 2017-03-03 12:00:30
