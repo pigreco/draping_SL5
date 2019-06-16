@@ -2,7 +2,7 @@
 
 **Drappeggio delle geometrie su griglie raster DEM/DTM  o Come trasformare le geometrie 2D in 3D**
 
-Traduzione del [WIki](https://www.gaia-gis.it/fossil/librasterlite2/wiki?name=draping)
+Traduzione del [Wiki](https://www.gaia-gis.it/fossil/librasterlite2/wiki?name=draping)
 
 ---
 
@@ -38,7 +38,8 @@ La coordinata Z da impostare nel punto è il valore di elevazione assegnato a qu
 
 Quindi, nell'esempio mostrato dalla figura di sotto, **Z = 121.88** sarà impostato per il Punto **Pt**.
 
-![img](./img/intro_01.png)
+<p align="center"> <a href="https://www.gaia-gis.it/fossil/librasterlite2/wiki?name=draping" target="_blank"><img src="./img/intro_01.png" width="400" title="Point"></a>
+</p>
 
 ### LINESTRING o POLYGON
 
@@ -50,7 +51,8 @@ Ma in questo modo, come esemplificato dalla figura di sotto, otterremo un segmen
 Se semplicemente ignoreremo tutte queste celle, rischieremo di introdurre una sorta di soppressione delle informazioni. 
 Questo può facilmente causare un degrado indesiderato nella precisione delle inter-cordate Z-coords, e questo sicuramente non è una buona cosa.
 
-![img](./img/intro_02.png)
+<p align="center"> <a href="https://www.gaia-gis.it/fossil/librasterlite2/wiki?name=draping" target="_blank"><img src="./img/intro_02.png" width="400" title="Linestring Polygon"></a>
+</p>
 
 Solo per capire meglio il problema:
 * Se consideriamo solo un segmento rettilineo **V1-V2**, assumeremo erroneamente che il profilo altimetrico abbia una pendenza costante. 
@@ -60,7 +62,8 @@ Solo per capire meglio il problema:
 * **Conclusione**: abbiamo sicuramente bisogno di un approccio più sofisticato quando drappeggiate LINESTRING e POLYGON. 
 Si garantisce in modo sicuro di essere assolutamente sicuri di non sopprimere mai qualsiasi informazione pertinente sulle quote disponibili dalla griglia raster.
 
-![img](./img/intro_03.png)
+<p align="center"> <a href="https://www.gaia-gis.it/fossil/librasterlite2/wiki?name=draping" target="_blank"><img src="./img/intro_03.png" width="400" title="Linestring Polygon"></a>
+</p>
 
 La soluzione è piuttosto semplice:
 * Abbiamo solo bisogno di approfondire ulteriormente le nostre Geometrie LINESTRING o POLYGON interpolando più Vertici a intervalli regolari. 
@@ -80,7 +83,8 @@ Questo è un approccio classico in due fasi:
     * È un compromesso ragionevole ed efficace: le nostre Geometrie drappeggiate metteranno sicuramente un po' di peso in più. 
     Ma non più di ciò che è strettamente indispensabile per evitare qualsiasi seria perdita di informazioni e un'accuratezza degradata.
 
-![img](./img/intro_04.png)
+<p align="center"> <a href="https://www.gaia-gis.it/fossil/librasterlite2/wiki?name=draping" target="_blank"><img src="./img/intro_04.png" width="400" title="Avvertimento"></a>
+</p>
 
 ## Esempio pratico
 
@@ -91,7 +95,8 @@ In questo primo esempio useremo i seguenti set di dati:
 
 Tutti e tre i dataset sono disponibili per il download gratuito da qui: [Regione Toscana - SITA: Cartoteca](http://www502.regione.toscana.it/geoscopio/cartoteca.html):
 
-![img](./img/img_00.png)
+<p align="center"> <a href="http://www502.regione.toscana.it/geoscopio/cartoteca.html" target="_blank"><img src="./img/img_00.png" width="500" title="Regione Toscana - SITA: Cartoteca"></a>
+</p>
 
 **Suggerimento**: troverai sia civici.shp che elem_strad.shp all'interno del pacchetto **Grafo Stradale** (Road Networ). 
 dtmoro.asc è contenuto nel pacchetto denominato **Morfologia / DTM 10x10 Orografico** (Morfologia / 10x10 DTM orografico).
@@ -109,12 +114,14 @@ Come mostrato nella figura sotto, useremo la procedura guidata della GUI appropr
 SELECT ImportSHP('D:\dati_qgis\regione_toscana\iternet\shp\civici', 
        'civici','CP1252',3003,'Geometry','PK_UID','POINT',0,0,1,1,'LOWERCASE');
 ```
+<p align="center"> <a href="https://www.gaia-gis.it/fossil/librasterlite2/wiki?name=draping" target="_blank"><img src="./img/img_01.png" width="400" title="Load Shapefile Civici"></a>
+</p>
 
-![img](./img/img_01.png)
+dopo circa **9 minuti**:
 
-dopo circa 9 minuti:
+<p align="center"> <a href="https://www.gaia-gis.it/fossil/librasterlite2/wiki?name=draping" target="_blank"><img src="./img/img_011.png" width="400" title="Load Shapefile elementi civici"></a>
+</p>
 
-![img](./img/img_011.png)
 
 #### rete stradale
 
@@ -128,11 +135,13 @@ SELECT ImportSHP( 'D:\dati_qgis\regione_toscana\iternet\shp\elem_strad',
        'elem_strad','CP1252',3003,'Geometry','PK_UID','LINESTRING',0,0,1,1,'LOWERCASE');
 ```
 
-![img](./img/img_02.png)
+<p align="center"> <a href="https://www.gaia-gis.it/fossil/librasterlite2/wiki?name=draping" target="_blank"><img src="./img/img_02.png" width="400" title="Load Shapefile Elementi stradali"></a>
+</p>
 
-dopo circa 4 minuti:
+dopo circa **4 minuti**:
 
-![img](./img/img_021.png)
+<p align="center"> <a href="https://www.gaia-gis.it/fossil/librasterlite2/wiki?name=draping" target="_blank"><img src="./img/img_021.png" width="400" title="Load Shapefile elementi civici"></a>
+</p>
 
 #### copertura raster DTM
 
@@ -145,13 +154,16 @@ SELECT RL2_CreateRasterCoverage ('dtmoro','FLOAT','DATAGRID',1,'LZMA',100,512,51
        RL2_SetPixelValue (RL2_CreatePixel ('FLOAT','DATAGRID',1),0,-9999 ),1,0,1,1,1,1);
 ```
 
-![img](./img/img_030.png)
+<p align="center"> <a href="https://www.gaia-gis.it/fossil/librasterlite2/wiki?name=draping" target="_blank"><img src="./img/img_030.png" width="500" title="Raster Coverage on MAIN DB"></a>
+</p>
 
-![img](./img/img_03.png)
+<p align="center"> <a href="https://www.gaia-gis.it/fossil/librasterlite2/wiki?name=draping" target="_blank"><img src="./img/img_03.png" width="500" title="Creating a new Raster Coverage"></a>
+</p>
 
 quindi:
 
-![img](./img/img_031.png)
+<p align="center"> <a href="https://www.gaia-gis.it/fossil/librasterlite2/wiki?name=draping" target="_blank"><img src="./img/img_031.png" width="300" title="Raster Coverage on MAIN DB"></a>
+</p>
 
 #### Importare DTM
 
@@ -169,7 +181,8 @@ Sfortunatamente tutte le versioni recenti di Windows pensano che i file temporan
 
 C'è solo un modo per caricare in modo efficace una griglia ASCII su Windows: l'applicazione (spatialite) deve necessariamente essere eseguita con i privilegi di amministratore.
 
-![img](./img/img_032.png)
+<p align="center"> <a href="" target="_blank"><img src="./img/img_032.png" width="500" title="Esegui come Amministratore"></a>
+</p>
 
 ![img](./img/img_0320.png)
 
@@ -181,20 +194,43 @@ tempo di esecuzione per importare il DTM circa **52** minuti
 
 il file sqlite pesa circa **1,85 GB** contro i circa **5 GB** dei file.
 
-![img](./img/sinottico.png)
+<p align="center"> <a href="https://www.gaia-gis.it/fossil/librasterlite2/wiki?name=draping" target="_blank"><img src="./img/sinottico.png" width="500" title="Confronto tra file e database"></a>
+</p>
 
 ### trasformare un set di dati 2D in uno 3D
 
-**Bene**, ora siamo finalmente pronti per trasformare sia i dataset **civici** che **elem_strad** dal 2D al 3D. Questa attività richiede solo l'esecuzione di una singola istruzione SQL:
+**Bene**, ora siamo finalmente pronti per trasformare sia i dataset **civici** che **elem_strad** dal **2D** al **3D**. Questa attività richiede solo l'esecuzione di una singola istruzione **SQL**:
+
+- **civici**:
 
 ```sql
 SELECT RL2_DrapeGeometries(NULL,'dtmoro',NULL,'civici','geometry','geom3d',-9999,5.0,5.0,0);
+-------------------------------------
+1
 ```
-![img](./img/img_0322.png)
+<p align="center"> <a href="https://www.gaia-gis.it/fossil/librasterlite2/wiki?name=draping" target="_blank"><img src="./img/img_0322.png" width="600" title="Draping"></a>
+</p>
 
-Check geometries:
+**Check geometries**:
 
-![img](./img/img_0323.png)
+<p align="center"> <a href="https://www.gaia-gis.it/fossil/librasterlite2/wiki?name=draping" target="_blank"><img src="./img/img_0323.png" width="600" title="Check geometries"></a>
+</p>
+
+- **elementi stradali**:
+
+```sql
+SELECT RL2_DrapeGeometries(NULL,'dtmoro',NULL,'elem_strad','geometry','geom3d',-9999,5.0,5.0,0);
+-------------------------------------
+1
+```
+<p align="center"> <a href="https://www.gaia-gis.it/fossil/librasterlite2/wiki?name=draping" target="_blank"><img src="./img/img_032s.png" width="600" title="Draping"></a>
+</p>
+
+**Check geometries**:
+
+<p align="center"> <a href="https://www.gaia-gis.it/fossil/librasterlite2/wiki?name=draping" target="_blank"><img src="./img/img_033s.png" width="600" title="Check geometries"></a>
+</p>
+
 
 **Una rapida spiegazione:**
 1. il primo argomento è il **prefisso DB** del database allegato contenente la copertura raster DEM/DTM. Quando è `NULL` (come in questo caso), si presuppone sempre il database **MAIN** .
@@ -210,13 +246,15 @@ Check geometries:
 
 Tutto fatto; i tuoi dataset 2D sono stati trasformati in set di dati 3D. Solo un ultimo controllo rapido testando caratteristiche casuali.
 
-![img](./img/img_033.png)
+<p align="center"> <a href="https://www.gaia-gis.it/fossil/librasterlite2/wiki?name=draping" target="_blank"><img src="./img/img_033.png" width="500" title="controllo rapido"></a>
+</p>
 
 ## Un secondo esempio più avanzato
 
 Nel primo esempio abbiamo visto che la Toscana ha un **DTM** a media risoluzione (10mx10m) che copre l'intera superficie della Regione.
 
-![img](./img/img_2.png)
+<p align="center"> <a href="https://www.gaia-gis.it/fossil/librasterlite2/wiki?name=draping" target="_blank"><img src="./img/img_2.png" width="400" title="Cartoteca"></a>
+</p>
 
 Ma su molte aree specifiche (mostrate nella figura di sopra dalle griglie rosse e verdi) la Toscana ha un secondo tipo di **DTM/DSM** basato su [rilievi](https://en.wikipedia.org/wiki/Lidar) **Lidar** ad **alta risoluzione (1mx1m)**. Tali Lidar DTM/DSM non coprono l'intera Regione, ma dove sono disponibili, sono certamente fonte di dati di elevazione molto preziosi.Il DTM/DSM Lidar appartiene a due serie diverse (verde e rossa), e sono di età e accuratezza diverse.
 
