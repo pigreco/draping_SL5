@@ -266,7 +266,7 @@ SELECT RL2_DrapeGeometries (NULL, NULL, 'draping_aux', 'civici', 'geometry', 'ge
 ```
 
 ```sql
-SELEZIONA RL2_DrapeGeometries (NULL, NULL, 'draping_aux' , "elem_strad", "geometry", "geom3d", -9999, 5.0, 5.0, 0); 
+SELECT RL2_DrapeGeometries (NULL, NULL, 'draping_aux' , "elem_strad", "geometry", "geom3d", -9999, 5.0, 5.0, 0); 
 --------------------------------------- 
 1
 ```
